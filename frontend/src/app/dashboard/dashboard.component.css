@@ -1,0 +1,37 @@
+.mat-slider-horizontal {
+    width: 300px;
+  }
+
+.svn-container { top: 80px; position: relative;}
+.svn-card { 
+    min-height: 250px;
+    box-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;
+}
+
+.svn-count { color:#3f51b5; }
+
+.svn-tab-icon {
+  margin-right: 8px;
+}
+
+
+mwl-gauge {
+  width: 180px;
+  height: 180px;
+  display: block;
+  padding: 8px;
+}
+mwl-gauge > .gauge > .dial {
+  stroke: #E8EAFC;
+  stroke-width: 6;
+  fill: rgba(0,0,0,0);
+}
+mwl-gauge > .gauge > .value {
+  stroke:#f44336;
+  stroke-width: 8;
+  fill: rgba(0,0,0,0);
+}
+mwl-gauge > .gauge > .value-text {
+  fill: #f44336;
+  font-size: 2em;
+}

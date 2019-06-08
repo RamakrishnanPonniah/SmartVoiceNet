@@ -1,0 +1,33 @@
+<nav class="navbar navbar-dark fixed-top svn-navbar flex-md-nowrap p-0 shadow  navbar-expand-lg ">
+  <a class="navbar-brand mr-0" href="#">
+    <img src="assets/images/accenture_logo.png" alt="accenture_logo" class="svn_acn_logo mx-3">
+    <img src="assets/images/logo.png" alt="accenture_logo" class="svn_logo">
+  </a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}">
+      <ul class="navbar-nav mr-auto">
+         
+        </ul>
+     
+    <ul class="navbar-nav nav px-3 svn-nav-ul">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">
+          <mat-icon>notifications</mat-icon>
+        </a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">
+          <mat-icon>email</mat-icon>
+        </a>
+      </li>
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">
+          <mat-icon>perm_identity</mat-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
