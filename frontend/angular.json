@@ -27,9 +27,7 @@
               "node_modules/material-design-icons/iconfont/material-icons.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [
-              "node_modules/popper.js/dist/umd/popper.min.js"
-            ],
+            "scripts": [],
             "es5BrowserSupport": true
           },
           "configurations": {
