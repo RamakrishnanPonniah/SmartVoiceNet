@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>
+  Info
+  <mat-divider></mat-divider>
+</h1>
+
+<div mat-dialog-content>
+  <p [textContent]="data.message"></p>  
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button   (click)="close($event)" color="primary">Ok</button>
+</div>

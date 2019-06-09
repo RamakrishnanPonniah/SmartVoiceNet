@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, Input } from '@angular/core';
 import { AudioRecordingService } from './audio-recording.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DataService } from '../shared/data.service';
@@ -11,10 +11,12 @@ DataService
   styleUrls: ['./record-audio.component.css']
 })
 export class RecordAudioComponent implements OnInit, OnDestroy {
-  score: number;
-  @Output() scoreEvent = new EventEmitter<number>();
+  score: number;  
   audioIconVisibility = true;
   recordedAudioUrl : SafeResourceUrl;
+
+  @Output() scoreEvent = new EventEmitter<number>();
+  @Input() thresholdVal : number;
 
   constructor(
     private audioRecordingService : AudioRecordingService,
@@ -22,6 +24,7 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    
     this.scoreEvent.emit(0);
   }
 
@@ -37,6 +40,7 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
   }
 
   startRecording() { 
+    
     this.audioIconVisibility = false;
     this.recordedAudioUrl = null;
     this.scoreEvent.emit(0);

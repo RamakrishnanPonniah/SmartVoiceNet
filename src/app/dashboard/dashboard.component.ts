@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
 import { FormControl } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 
 @Component({
@@ -11,8 +13,11 @@ import { FormControl } from '@angular/forms';
 })
 export class DashboardComponent implements OnInit {
 
+  constructor( public dialog: MatDialog) { }
+
   selected = new FormControl(0);
 
+  updateBtnEnabled : boolean = false;
   autoTicks = false;
   disabled = false;
   max = 50;
@@ -25,6 +30,8 @@ export class DashboardComponent implements OnInit {
   color = 'warn';
   mode = 'determinate';
   score = 50;
+  dndSelected = 'spam';
+  date = new Date();
 
   
   get tickInterval(): number | 'auto' {
@@ -33,14 +40,34 @@ export class DashboardComponent implements OnInit {
   set tickInterval(value) {
     this._tickInterval = coerceNumberProperty(value);
   }
-  private _tickInterval = 1;
+  private _tickInterval = 1; 
 
-  constructor() { }
-
-  updateScore($event) {
-    this.score = $event
+  onDndChange($event) {
+    this.updateBtnEnabled = $event.value ? true : false;
   }
 
+  onUpdate() {
+
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '300px',
+      data: {message : 'Thank you.Call catrgory reported.'}
+    });
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (data) {
+          this.updateBtnEnabled = false;
+        }
+      }
+    );
+  }
+
+  updateScore($event) {
+    this.score = $event;
+  }
+
+ 
+
+  
   ngOnInit() {
   }
 

@@ -1,2 +1,6 @@
-
+<div class="d-flex justify-content-center">
+<button type="button" mat-raised-button (click)="fileInput.click()" color="">
+    <mat-icon class="mr-2">record_voice_over</mat-icon>Upload Audio</button>
+<input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+</div>
   
