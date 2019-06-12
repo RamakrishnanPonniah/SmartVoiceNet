@@ -29,6 +29,7 @@ import { RecordAudioComponent } from './record-audio/record-audio.component';
 import { UploadAudioComponent } from './upload-audio/upload-audio.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { HistoryComponent } from './history/history.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -40,7 +41,8 @@ import { HistoryComponent } from './history/history.component';
     RecordAudioComponent,
     UploadAudioComponent,
     DialogComponent,
-    HistoryComponent
+    HistoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

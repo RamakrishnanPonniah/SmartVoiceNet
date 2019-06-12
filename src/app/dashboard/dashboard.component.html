@@ -48,7 +48,7 @@
 
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <mat-icon class="svn-tab-icon">list</mat-icon>
+                  <mat-icon class="svn-tab-icon">history</mat-icon>
                   Recent Activity
                 </ng-template>
                 <div class="mt-3">
@@ -75,7 +75,8 @@
                               <mat-select placeholder="Select an option" [(value)]="dndSelected" (selectionChange)="onDndChange($event)">
                                 <mat-option>None</mat-option>
                                 <mat-option value="Spam">Spam</mat-option>
-                                <mat-option value="Fraud">Fraud & Legit</mat-option>
+                                <mat-option value="Fraud">Fraud</mat-option>                                
+                                <mat-option value="Legit">Legit</mat-option>
                               </mat-select>
                           </mat-form-field>
                        </td>
@@ -97,7 +98,7 @@
 
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <mat-icon class="svn-tab-icon">history</mat-icon>
+                  <mat-icon class="svn-tab-icon">call</mat-icon>
                   Call history
                 </ng-template>
                 <div class="mt-3">                  
