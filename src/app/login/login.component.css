@@ -1,0 +1,10 @@
+.login-container {
+   margin: 0 auto;
+   vertical-align: middle;
+   top: 65px;
+}
+
+.form-element {
+    padding: 5px 0px 25px 2px;
+    width: 100%;
+  }

@@ -15,7 +15,7 @@ import {
    MatExpansionModule,
    MatTableModule
   } from '@angular/material';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -62,6 +62,7 @@ import { LoginComponent } from './login/login.component';
     MatExpansionModule,
     MatTableModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     GaugeModule.forRoot()
   ],
