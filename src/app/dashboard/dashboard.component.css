@@ -6,7 +6,7 @@
     background-color: #f44336;
   }
 
-.svn-container { top: 80px; position: relative;}
+.svn-container { top: 25px; position: relative;}
 .svn-card { 
     min-height: 250px;
     box-shadow: 0px 3px 11px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A;

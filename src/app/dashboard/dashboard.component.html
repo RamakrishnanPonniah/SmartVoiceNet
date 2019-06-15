@@ -8,7 +8,7 @@
         </mat-card-header>
         <mat-card-content>
           <div class="mb-3">
-            <app-record-audio [thresholdVal]="thresholdVal" (scoreEvent)="updateScore($event)"></app-record-audio>
+            <app-record-audio [thresholdVal]="thresholdVal" (transcriptEvent)="updateTranscript($event)" (scoreEvent)="updateScore($event)"></app-record-audio>
             <div class="d-flex justify-content-center">
                 <mat-divider class="svn-divider"> </mat-divider>
             </div>
@@ -25,24 +25,7 @@
                   Call Transcript
                 </ng-template>
                 <div class="mt-3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip
-                  ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip
-                  ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip
-                  ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip
-                  ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et
-                  dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                  {{transcript}}
                 </div>
               </mat-tab>
 

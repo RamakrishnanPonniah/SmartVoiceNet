@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
 
   selected = new FormControl(0);
 
+  transcript: string;
+
   updateBtnEnabled : boolean = false;
   autoTicks = false;
   disabled = false;
@@ -63,6 +65,11 @@ export class DashboardComponent implements OnInit {
 
   updateScore($event) {
     this.score = $event;
+  }
+
+  updateTranscript($event) {
+    
+    this.transcript = $event;
   }
 
  

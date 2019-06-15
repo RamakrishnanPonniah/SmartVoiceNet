@@ -12,7 +12,7 @@
         </ul>
      
     <ul class="navbar-nav nav px-3 svn-nav-ul">
-      <li class="nav-item text-nowrap">
+      <!--<li class="nav-item text-nowrap">
         <a class="nav-link" href="#" title="notifications">
           <mat-icon>notifications</mat-icon>
         </a>
@@ -26,10 +26,10 @@
         <a class="nav-link" href="#" title="profile">
           <mat-icon>perm_identity</mat-icon>
         </a>
-      </li>
+      </li>-->
       <li class="nav-item text-nowrap" *ngIf="isLoggedIn">
         <a class="nav-link" href="#" title="logout" (click)="logout()" >
-          <mat-icon >lock_out</mat-icon>
+          <mat-icon >lock_open</mat-icon>
         </a>
       </li>
     </ul>

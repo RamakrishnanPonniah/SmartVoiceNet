@@ -13,7 +13,8 @@ import {
    MatSelectModule,
    MatDialogModule,
    MatExpansionModule,
-   MatTableModule
+   MatTableModule,
+   MatSnackBarModule
   } from '@angular/material';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -61,6 +62,7 @@ import { LoginComponent } from './login/login.component';
     MatDialogModule,
     MatExpansionModule,
     MatTableModule,
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
