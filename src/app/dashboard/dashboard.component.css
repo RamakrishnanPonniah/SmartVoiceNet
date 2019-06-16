@@ -77,6 +77,13 @@ mwl-gauge > .gauge > .value-text {
   fill: green;
 }
 
+.spam-gauge {
+  color: #ff8f00;
+}
+
+.spam-gauge > .gauge > .value-text{
+  fill: #ff8f00;
+}
 
 .fraud-gauge { color: #f44336;}
 

@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
 
   updateScore($event) {
     this.gaugeData = $event;
-    this.gaugeClass = this.gaugeData.type == 'AUTHENTIC' ? 'auth-gauge' : (this.gaugeData.type == 'FRAUD CALL ALERT' ? 'fraud-gauge' : '')
+    this.gaugeClass = this.gaugeData.type == 'AUTHENTIC' ? 'auth-gauge' : (this.gaugeData.type == 'FRAUD CALL ALERT' ? 'fraud-gauge' : 'spam-gauge')
   }
 
   updateTranscript($event) {

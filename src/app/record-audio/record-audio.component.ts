@@ -76,8 +76,8 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
     this.recognizer.recognized = (s, e) => this.recognized(s, e);
     
     this.recognizer.speechEndDetected = (sender: any, event: any) => {
-      alert('pver');// this is a separate function that starts up speech recognition.
-  };
+      console.log('speech end detected');// this is a separate function that starts up speech recognition.
+    };
     
   }
 
