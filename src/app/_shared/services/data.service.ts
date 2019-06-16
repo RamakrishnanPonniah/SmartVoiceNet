@@ -12,7 +12,7 @@ export class DataService {
     'free', 'gift', 'now', 'today', 'dollars', '$', 'amount', 'prize', 'off', 'offer', 'reward', 'discount',
      'scheme', 'plan', 'money', 'save', 'savings', 'coverage', 'final', 'last', 'day', 'program', 'new',
      'phone', 'contact', 'mobile', 'click', 'press', 'enter', 'invest', 'returns', 'benefits', 'profit',
-      'dream', 'bonus', 'points', 'cashback', 'promotion', 'promo', 'code', 'personal'
+      'dream', 'bonus', 'points', 'cashback', 'promotion', 'promo', 'code', 'personal', 'best'
   ];
 
   private FRAUD_CALL_ALERT: any = [
