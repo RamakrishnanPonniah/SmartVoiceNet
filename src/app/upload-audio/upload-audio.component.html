@@ -1,6 +1,15 @@
-<div class="d-flex justify-content-center">
-<button type="button" mat-raised-button (click)="fileInput.click()" color="">
+<div class="d-flex justify-content-center mt-2">
+<button type="button" mat-raised-button (click)="fileInput.click()" color="primary">
     <mat-icon class="mr-2">record_voice_over</mat-icon>Upload Audio</button>
-<input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+<input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" accept=".wav">
 </div>
   
+
+<div class="d-flex justify-content-center mt-3"> 
+        <audio controls autoplay *ngIf="audioSrc" >
+          <source [src]="audioSrc" type="audio/webm">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      {{speechText}}

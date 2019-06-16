@@ -3,17 +3,17 @@ import { Component, OnInit } from '@angular/core';
 
 export interface callHistoryList {
   no: number;
-  date: string;
+  date: number;
   phone : number;
   category: string;
 }
 
 const ELEMENT_DATA: callHistoryList[] = [
-  {no: 1, date: '1560099225205', phone: 123456789, category: 'Spam'},
-  {no: 2, date: '1560099225205', phone: 123456789, category: 'Fraud & Legit'},
-  {no: 3, date: '1560099225205', phone: 123456789, category: 'Spam'},
-  {no: 4, date: '1560099225205', phone: 123456789, category: 'Fraud & Legit'},
-  {no: 5, date: '1560099225205', phone: 123456789, category: 'Spam'},
+  {no: 1, date:  new Date().getTime(), phone: 123456789, category: 'AUTHENTIC'},
+  {no: 2, date: new Date().getTime(), phone: 643456701, category: 'FRAUD CALL ALERT'},
+  {no: 3, date: new Date().getTime(), phone: 723456789, category: 'MARKETING SPAM ALERT'},
+  {no: 4, date:  new Date().getTime(), phone: 363456789, category: 'AUTHENTIC'},
+  {no: 5, date: new Date().getTime(), phone: 223456789, category: 'MARKETING SPAM ALERT'},
 ];
 
 

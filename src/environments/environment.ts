@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  speechSubscriptionKey: 'a593c3d043744d85a3fbcb1591c246b0'
 };
 
 /*

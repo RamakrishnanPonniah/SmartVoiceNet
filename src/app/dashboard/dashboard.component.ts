@@ -27,11 +27,13 @@ export class DashboardComponent implements OnInit {
   showTicks = true;
   step = 10;
   thumbLabel = true;
-  thresholdVal = 10;
+  thresholdVal = 20;
 
   color = 'warn';
   mode = 'determinate';
   score = 50;
+  gaugeData :any;
+  gaugeClass: string;
   dndSelected = 'spam';
   date = new Date();
 
@@ -52,7 +54,7 @@ export class DashboardComponent implements OnInit {
 
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '300px',
-      data: {message : 'Thank you.Call catrgory reported.'}
+      data: {message : 'Thank you. Call category updated.'}
     });
     dialogRef.afterClosed().subscribe(
       data => {
@@ -64,7 +66,8 @@ export class DashboardComponent implements OnInit {
   }
 
   updateScore($event) {
-    this.score = $event;
+    this.gaugeData = $event;
+    this.gaugeClass = this.gaugeData.type == 'AUTHENTIC' ? 'auth-gauge' : (this.gaugeData.type == 'FRAUD CALL ALERT' ? 'fraud-gauge' : '')
   }
 
   updateTranscript($event) {
@@ -76,6 +79,7 @@ export class DashboardComponent implements OnInit {
 
   
   ngOnInit() {
+    this.gaugeClass =  'empty-gauge';
   }
 
 }

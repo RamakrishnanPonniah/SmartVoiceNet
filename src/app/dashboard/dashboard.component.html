@@ -4,15 +4,20 @@
     <div class="col-sm-7">
       <mat-card class="svn-card">
         <mat-card-header>
-          <mat-card-title>Record Audio</mat-card-title>
+          <mat-card-title>Audio Input</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <div class="mb-3">
+          <div class="row mb-3">
+            <div class="col">
             <app-record-audio [thresholdVal]="thresholdVal" (transcriptEvent)="updateTranscript($event)" (scoreEvent)="updateScore($event)"></app-record-audio>
-            <div class="d-flex justify-content-center">
-                <mat-divider class="svn-divider"> </mat-divider>
+          </div>
+            <div class="">
+                <mat-divider class="svn-divider" [vertical]="true"> </mat-divider>
             </div>
+            <div class="col">
             <app-upload-audio></app-upload-audio>
+          </div>
+
           </div>
 
 
@@ -22,7 +27,7 @@
               <mat-tab>
                 <ng-template mat-tab-label>
                   <mat-icon class="svn-tab-icon">text_fields</mat-icon>
-                  Call Transcript
+                  Transcript
                 </ng-template>
                 <div class="mt-3">
                   {{transcript}}
@@ -31,23 +36,23 @@
 
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <mat-icon class="svn-tab-icon">history</mat-icon>
-                  Recent Activity
+                  <mat-icon class="svn-tab-icon">report</mat-icon>
+                  Report
                 </ng-template>
                 <div class="mt-3">
                   <form class="info-form">
 
-                    <mat-form-field class="info-full-width">
-                      <mat-label>Call Date</mat-label>
+                    <mat-form-field class="info-form info-full-width">
+                      <mat-label><b>Call Date</b></mat-label>
                       <input matInput  disabled value="{{date | date: 'shortDate'}}">
                     </mat-form-field>
                     <mat-form-field class="info-full-width">
-                      <mat-label>Caller Number</mat-label>
+                      <mat-label><b>Caller Number</b></mat-label>
                       <input matInput disabled value="+91-123456789">
                     </mat-form-field>
                     <mat-form-field class="info-full-width">
-                      <mat-label>Identified Category</mat-label>
-                      <input matInput disabled value="Spam">
+                      <mat-label><b>Identified Category</b></mat-label>
+                      <input matInput disabled [value]="gaugeData.type || ''">
                     </mat-form-field>
 
                     <table class="info-full-width" cellspacing="0">
@@ -56,10 +61,10 @@
                           <mat-form-field class="info-full-width">
                               <mat-label>Reported Category</mat-label>
                               <mat-select placeholder="Select an option" [(value)]="dndSelected" (selectionChange)="onDndChange($event)">
-                                <mat-option>None</mat-option>
-                                <mat-option value="Spam">Spam</mat-option>
-                                <mat-option value="Fraud">Fraud</mat-option>                                
-                                <mat-option value="Legit">Legit</mat-option>
+                               
+                                <mat-option value="AUTHENTIC">AUTHENTIC</mat-option>
+                                <mat-option value="FRAUD CALL ALERT">FRAUD CALL ALERT</mat-option>                                
+                                <mat-option value="MARKETING SPAM ALERT">MARKETING SPAM ALERT</mat-option>
                               </mat-select>
                           </mat-form-field>
                        </td>
@@ -81,8 +86,8 @@
 
               <mat-tab>
                 <ng-template mat-tab-label>
-                  <mat-icon class="svn-tab-icon">call</mat-icon>
-                  Call history
+                  <mat-icon class="svn-tab-icon">history</mat-icon>
+                 Recent
                 </ng-template>
                 <div class="mt-3">                  
                     <app-history></app-history>
@@ -118,15 +123,15 @@
       <div class="col-sm-12 mt-4 p-0">
         <mat-card class="svn-card">
           <mat-card-header>
-            <mat-card-title>Live Spam Score</mat-card-title>
+            <mat-card-title>Audio Inspection Result</mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <div class="d-flex justify-content-center">
-              <mwl-gauge [dialStartAngle]="180" [dialEndAngle]="0" [max]="100" [value]="score" [animated]="true"
-                [animationDuration]="1">
+            <div class="d-flex justify-content-center"> 
+              <mwl-gauge [dialStartAngle]="180" [dialEndAngle]="0" [max]="100" [value]="gaugeData.score" [animated]="true"
+                [animationDuration]="1" [ngClass]="gaugeClass" class="empty-gauge">
               </mwl-gauge>
-
-            </div>
+            </div>            
+            <h6 class="d-flex justify-content-center" [ngClass]="gaugeClass"><b>{{gaugeData.type}}</b></h6>
           </mat-card-content>
 
         </mat-card>

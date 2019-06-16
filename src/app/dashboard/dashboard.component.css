@@ -14,9 +14,10 @@
 
 .svn-divider {
    margin: 0  auto !important;
-   width: 50% !important;
     position: relative !important;
     margin-bottom: 1rem !important;
+    height: 50px;
+    font-weight: bold;
   }
 
 .info-form {
@@ -40,9 +41,12 @@ td {
 }
 
 
+
+
+
 mwl-gauge {
   width: 180px;
-  height: 180px;
+  height: 120px;
   display: block;
   padding: 8px;
 }
@@ -52,11 +56,34 @@ mwl-gauge > .gauge > .dial {
   fill: rgba(0,0,0,0);
 }
 mwl-gauge > .gauge > .value {
-  stroke:#f44336;
+  stroke:#ff8f00;
   stroke-width: 8;
   fill: rgba(0,0,0,0);
 }
 mwl-gauge > .gauge > .value-text {
   fill: #f44336;
   font-size: 2em;
+}
+
+.empty-gauge > .gauge > .value-text { fill: grey;}
+
+.auth-gauge { color: green;}
+
+.auth-gauge >  .gauge > .value{
+  stroke : green;
+}
+
+.auth-gauge > .gauge > .value-text{
+  fill: green;
+}
+
+
+.fraud-gauge { color: #f44336;}
+
+.fraud-gauge >  .gauge > .value{
+  stroke : #f44336;
+}
+
+.fraud-gauge > .gauge > .value-text{
+  fill: #f44336;
 }

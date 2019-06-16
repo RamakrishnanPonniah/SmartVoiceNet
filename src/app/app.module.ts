@@ -31,6 +31,7 @@ import { UploadAudioComponent } from './upload-audio/upload-audio.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { HistoryComponent } from './history/history.component';
 import { LoginComponent } from './login/login.component';
+import { DataService } from './_shared/services/data.service';
 
 
 
@@ -69,7 +70,7 @@ import { LoginComponent } from './login/login.component';
     GaugeModule.forRoot()
   ],
   entryComponents: [DialogComponent],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

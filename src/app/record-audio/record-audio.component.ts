@@ -1,11 +1,15 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter, Input } from '@angular/core';
 import { AudioRecordingService } from './audio-recording.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { BehaviorSubject } from 'rxjs';
 
-import { DataService } from '../shared/data.service';
-import { SpeechToTextService, RecognitionResult  } from '../_shared/services/speech-to-text.service';
 
-DataService 
+import { DataService } from '../_shared/services/data.service';
+import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk';
+import { environment } from 'src/environments/environment';
+
+let speechSubject$ = new BehaviorSubject('');
+
 
 @Component({
   selector: 'app-record-audio',
@@ -17,73 +21,100 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
   score: number;  
   audioIconVisibility = true;
   recordedAudioUrl : SafeResourceUrl;
-
-  @Output() scoreEvent = new EventEmitter<number>();
+  
+  @Output() scoreEvent = new EventEmitter<any>();
   @Output() transcriptEvent  = new EventEmitter<string>();
   @Input() thresholdVal : number;
 
   public transcript : string = '';
   public readonly language = 'en-US';
 
+  //microsofot speech service == > subscription key and region for speech services.
+  subscriptionKey = environment.speechSubscriptionKey;
+  serviceRegion : string;
+  authorizationToken : string;
+  SpeechSDK : any;
+  recognizer  : any;
+  speechConfig : any;
+  audioConfig: any;
+  speechText: string = '';
+
   constructor(
     private audioRecordingService : AudioRecordingService,
     private sanitizer: DomSanitizer,
-    public speech: SpeechToTextService
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
     
-    this.scoreEvent.emit(0);
-    this.speech.Result.subscribe((result: RecognitionResult) => {
-      console.log(result);
-      this.transcriptEvent.emit(result ? result.transcript : '');
-    });
+    this.scoreEvent.emit({score:0});    
+   
+    this.speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this.subscriptionKey, 'southeastasia');
+       
+    this.speechConfig.speechRecognitionLanguage = 'en-US';
+
+    this.audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+    // Setup speech recognizer
+    this.recognizer = new SpeechSDK.SpeechRecognizer(this.speechConfig, this.audioConfig);      
+
+   
   }
 
+ 
   ngOnDestroy() {
-    this.abortRecording();
-  }
-
-  abortRecording() {
-    if (this.audioIconVisibility) {
-      this.audioIconVisibility = false;
-      this.audioRecordingService.abortRecording();
-    }
-  }
-
-  startRecording() { 
-
-    this.audioIconVisibility = false;
-      this.speech.requestListening(this.language);
-
-    /*if (this.speech.IsListening) {
-      this.speech.stopListening();
-      this.audioIconVisibility = true;
-    } else {
-      this.audioIconVisibility = false;
-      this.speech.requestListening(this.language);
-    }*/
     
-    /*   
-    this.recordedAudioUrl = null;
-    this.scoreEvent.emit(0);
-    this.audioRecordingService.startRecording();*/
+  }
 
+ 
+  startRecording() { 
+    
+    console.log('listening...');
+    //this.speechText = '';
+    //this.transcriptEvent.emit(this.speechText);
+    this.audioIconVisibility = false;
+    this.recognizer.startContinuousRecognitionAsync(function(){});
+    // The event recognized signals that a final recognition result is received.
+    // This is the final event that a phrase has been recognized.
+    // For continuous recognition, you will get one recognized event for each phrase recognized.
+    this.recognizer.recognized = function (s, e) {
+      
+      // Indicates that recognizable speech was not detected, and that recognition is done.
+      if (e.result.reason === SpeechSDK.ResultReason.NoMatch) {
+        var noMatchDetail = SpeechSDK.NoMatchDetails.fromResult(e.result);
+        let result = "(recognized)  Reason: " + SpeechSDK.ResultReason[e.result.reason] + " NoMatchReason: " + SpeechSDK.NoMatchReason[noMatchDetail.reason] + "\r\n";
+        console.log(result);
+      } else { 
+        console.log(e.result.text);
+      }
+      this.speechText += e.result.text;
+      speechSubject$.next(this.speechText);    
+    };
+    
+  }
+  
+  updateData() {       
+    let text = speechSubject$.getValue();
+    this.speechText = text.replace('undefined', '');
+    console.log(this.speechText);
+    var res = this.dataService.validateText(this.speechText);
+    this.transcriptEvent.emit(this.speechText);
+    this.scoreEvent.emit(res);
   }
 
   stopRecording() { 
-    /*this.audioRecordingService.stopRecording();
-     this.audioRecordingService.getRecordedBlob().subscribe( audioFile => {
-        console.log(audioFile);
-        this.recordedAudioUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(audioFile.blob));
-        console.log('audio file size is ' + (audioFile.blob.size/1024/1024)+ 'MB');
-        console.log(this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(audioFile.blob)));
-        this.scoreEvent.emit(75);
-     });*/
-     this.speech.stopListening();
-     this.audioIconVisibility = !this.audioIconVisibility;
-
+    console.log('Stopped listening...')
+    this.recognizer.stopContinuousRecognitionAsync();
+    this.audioIconVisibility = !this.audioIconVisibility;
+    this.updateData();
+      
   }
+
+
+
+
+
+
+
 
   
 
