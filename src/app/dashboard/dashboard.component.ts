@@ -67,7 +67,10 @@ export class DashboardComponent implements OnInit {
 
   updateScore($event) {
     this.gaugeData = $event;
-    this.gaugeClass = this.gaugeData.type == 'AUTHENTIC' ? 'auth-gauge' : (this.gaugeData.type == 'FRAUD CALL ALERT' ? 'fraud-gauge' : 'spam-gauge')
+    if(this.gaugeData.type == 'MARKETING SPAM ALERT') this.gaugeClass = 'spam-gauge';
+    else {
+      this.gaugeClass = this.gaugeData.type == 'AUTHENTIC' ? 'auth-gauge' : (this.gaugeData.type == 'FRAUD CALL ALERT' ? 'fraud-gauge' : '')
+    }
   }
 
   updateTranscript($event) {
@@ -79,6 +82,7 @@ export class DashboardComponent implements OnInit {
 
   
   ngOnInit() {
+    
     this.gaugeClass =  'empty-gauge';
   }
 

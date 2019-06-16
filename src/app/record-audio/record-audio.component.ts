@@ -69,6 +69,9 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
   startRecording() { 
     
     console.log('listening...');
+    this.speechText = '';
+    this.transcriptEvent.emit(this.speechText);
+    this.scoreEvent.emit({score:0});   
     //this.speechText = '';
     //this.transcriptEvent.emit(this.speechText);
     this.audioIconVisibility = false;
@@ -114,7 +117,8 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
     console.log('Stopped listening...')
     this.recognizer.stopContinuousRecognitionAsync();
     this.audioIconVisibility = !this.audioIconVisibility;
-    this.updateData();
+    //this.updateData();
+    
       
   }
 
