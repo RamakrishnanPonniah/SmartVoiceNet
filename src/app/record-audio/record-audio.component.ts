@@ -72,11 +72,19 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
     //this.speechText = '';
     //this.transcriptEvent.emit(this.speechText);
     this.audioIconVisibility = false;
-    this.recognizer.startContinuousRecognitionAsync(function(){});
-    // The event recognized signals that a final recognition result is received.
+    this.recognizer.startContinuousRecognitionAsync();
+    this.recognizer.recognized = (s, e) => this.recognized(s, e);
+    
+    this.recognizer.speechEndDetected = (sender: any, event: any) => {
+      alert('pver');// this is a separate function that starts up speech recognition.
+  };
+    
+  }
+
+  // The event recognized signals that a final recognition result is received.
     // This is the final event that a phrase has been recognized.
     // For continuous recognition, you will get one recognized event for each phrase recognized.
-    this.recognizer.recognized = function (s, e) {
+    recognized = function (s, e) {
       
       // Indicates that recognizable speech was not detected, and that recognition is done.
       if (e.result.reason === SpeechSDK.ResultReason.NoMatch) {
@@ -84,13 +92,14 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
         let result = "(recognized)  Reason: " + SpeechSDK.ResultReason[e.result.reason] + " NoMatchReason: " + SpeechSDK.NoMatchReason[noMatchDetail.reason] + "\r\n";
         console.log(result);
       } else { 
-        console.log(e.result.text);
+        console.log('recognizing text', e.result.text);
+        //this.transcriptEvent.emit(e.result.text);
       }
       this.speechText += e.result.text;
-      speechSubject$.next(this.speechText);    
+      speechSubject$.next(this.speechText);  
+      this.updateData();
     };
-    
-  }
+
   
   updateData() {       
     let text = speechSubject$.getValue();

@@ -56,7 +56,7 @@ export class DataService {
     //let count : number = 0;
     let words = [];
     data.forEach(keyword => {
-      if(transcript.includes(keyword))  { 
+      if(transcript.toLowerCase().includes(keyword))  { 
         if(words.length == 0 ) words.push(keyword);
         else if(words.length > 0 && words.indexOf(keyword) == -1)  words.push(keyword);
       }
