@@ -9,7 +9,9 @@ import { AuthService } from '../_shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) { 
+   
+  }
   
   isLoggedIn :boolean;
   navbarOpen = false;
@@ -23,7 +25,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.isLoggedIn();
+    this.authService.isUserLoggedIn.subscribe( data => { 
+      this.isLoggedIn = data;
+    })
   }
 
 }

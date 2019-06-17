@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ConsoleLoggingListener } from 'microsoft-cognitiveservices-speech-sdk/distrib/lib/src/common.browser/Exports';
+
 
 @Injectable()
 export class DataService {
+
+  
 
   private dataSource = new BehaviorSubject({});
   currentData = this.dataSource.asObservable();

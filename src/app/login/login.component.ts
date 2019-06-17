@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.authService.login(this.loginForm.value);
+    this.authService.isUserLoggedIn.next(true);
     this.router.navigateByUrl('home');
   }
 
