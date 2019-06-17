@@ -14,7 +14,8 @@ export class DataService {
      'phone', 'contact', 'mobile', 'click', 'press', 'enter', 'invest', 'returns', 'benefits', 'profit',
       'dream', 'bonus', 'points', 'cashback', 'promotion', 'promo', 'code', 'personal', 'best', 'investments', 
       'investment', 'return', 'saving', 'offers', 'name', 'select', 'selected', 'lot', 'lottery', 'term', 'short', 'shortterm', 
-    'life', 'lifeterm', 'insurance',  'income', 'profitable', 'good', 'beneficial', 'credit', 'score'
+    'life', 'lifeterm', 'insurance',  'income', 'profitable', 'good', 'beneficial', 'credit', 'score', 'qualify', 'qualified', 'unlimited', 
+    'include', 'includes', 'inclusive', 'Is that ok', 'can I confirm', 'confirm', 'please confirm', 'lucky', 'draw', 'luckydraw'
   ];
 
   private FRAUD_CALL_ALERT: any = [
@@ -24,7 +25,8 @@ export class DataService {
        'unauthorized', 'unusual', 'suspicious', 'alert', 'risk', 'personal', 'data',
        'virus', 'safe', 'remove', 'infect', 'passcode', 'username', 'payment', 'caller', 'caller ID',
         'IVR', 'secure', 'server', 'invalid', 'security', 'red', 'flag', 'someone', 'somebody', 'else',
-         'fraud', 'spam', 'error', 'warning', 'wrong'
+         'fraud', 'spam', 'error', 'warning', 'wrong', 'SSN', 'adhaar', 'aadhar', 'creditcard', 'debitcard', 'atmcard', 'newcard', 
+    'dateofbirth', 'birthday', 'digits'
   ];
 
   constructor() { }
