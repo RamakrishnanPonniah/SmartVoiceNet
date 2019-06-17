@@ -1,10 +1,12 @@
 .login-container {
    margin: 0 auto;
    vertical-align: middle;
-   top: 65px;
+   top: 25px;
 }
 
 .form-element {
     padding: 5px 0px 25px 2px;
     width: 100%;
   }
+
+  .svn-login-card-header > .mat-card-header-text { margin: 0px !important;}

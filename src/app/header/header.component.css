@@ -6,12 +6,12 @@
 .svn-nav-ul > li > a { color: #fff; }
 
 .svn_acn_logo {
-    height: 50px;
+    height: 60px;
 }
 
 .svn_logo { height: 55px;}
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .show { height: 150px; background :#3f51b5;}
+    .show { height: 120px; background :#3f51b5;}
   }

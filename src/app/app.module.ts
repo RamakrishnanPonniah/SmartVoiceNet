@@ -32,6 +32,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { HistoryComponent } from './history/history.component';
 import { LoginComponent } from './login/login.component';
 import { DataService } from './_shared/services/data.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -44,7 +45,8 @@ import { DataService } from './_shared/services/data.service';
     UploadAudioComponent,
     DialogComponent,
     HistoryComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

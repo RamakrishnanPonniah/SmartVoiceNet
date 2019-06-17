@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../_shared/interfaces/user';
 import { AuthService } from '../_shared/services/auth.service';
@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.authService.login(this.loginForm.value);
-    this.authService.isUserLoggedIn.next(true);
+    const isLoggedIn = this.authService.isLoggedIn();
+    this.authService.isUserLoggedIn.next(isLoggedIn);
     this.router.navigateByUrl('home');
   }
 
