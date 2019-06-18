@@ -11,7 +11,12 @@
 
 .svn_logo { height: 55px;}
 
+
+.svn-menu-link { vertical-align: top;}
+
+.svn-nav-ul > li :hover { cursor: pointer; background: #404fa2;}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .show { height: 120px; background :#3f51b5;}
+    .show { height: 180px; background :#3f51b5;}
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../_shared/services/auth.service';
 
@@ -9,7 +10,7 @@ import { AuthService } from '../_shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService, private router: Router) { 
     this.authService.isUserLoggedIn.subscribe( data => {       
       this.isLoggedIn = data;
     })
@@ -24,6 +25,14 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  showHome() {
+    this.router.navigateByUrl('home');
+  }
+
+  showSlider() {
+    this.router.navigateByUrl('about-us');
   }
 
   ngOnInit() {

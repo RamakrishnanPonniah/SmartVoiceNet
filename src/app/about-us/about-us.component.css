@@ -1,0 +1,16 @@
+.slider-img{
+   object-fit: unset;
+   height: 500px;
+   width: 100%;
+}
+
+
+.slider-container {
+    height: 50vh;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .slider-img { height: 360px;}
+  }

@@ -93,9 +93,9 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
       if (e.result.reason === SpeechSDK.ResultReason.NoMatch) {
         var noMatchDetail = SpeechSDK.NoMatchDetails.fromResult(e.result);
         let result = "(recognized)  Reason: " + SpeechSDK.ResultReason[e.result.reason] + " NoMatchReason: " + SpeechSDK.NoMatchReason[noMatchDetail.reason] + "\r\n";
-        console.log(result);
+        //console.log(result);
       } else { 
-        console.log('recognizing text', e.result.text);
+        //console.log('recognizing text', e.result.text);
         //this.transcriptEvent.emit(e.result.text);
       }
       this.speechText += e.result.text;

@@ -11,21 +11,25 @@
         </ul>
      
     <ul class="navbar-nav nav px-3 svn-nav-ul">
-      <!--<li class="nav-item text-nowrap">
-        <a class="nav-link" href="#" title="notifications">
-          <mat-icon>notifications</mat-icon>
+
+        <li class="nav-item text-nowrap" *ngIf="isLoggedIn" (click)="showHome()">
+            <a class="nav-link" href="javascript:void(0)" title="Home">
+              <mat-icon >home</mat-icon>
+               <span class="svn-menu-link m-1">Home</span>
+            </a>
+          </li>
+
+      <li class="nav-item text-nowrap" *ngIf="isLoggedIn" (click)="showSlider()">
+        <a class="nav-link" href="javascript:void(0)" title="About Us">
+            <mat-icon >people</mat-icon>
+            <span class="svn-menu-link m-1">About Us</span>
         </a>
       </li>
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">
-          <mat-icon>email</mat-icon>
-        </a>
-      </li>-->
-    
-     
+          
       <li class="nav-item text-nowrap" *ngIf="isLoggedIn">
         <a class="nav-link" href="#" title="logout" (click)="logout()" >
           <mat-icon >lock_open</mat-icon>
+          <span class="svn-menu-link m-1">logout</span>
         </a>
       </li>
 

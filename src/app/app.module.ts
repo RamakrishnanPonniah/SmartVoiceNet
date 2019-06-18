@@ -21,6 +21,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { GaugeModule } from 'angular-gauge';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { HistoryComponent } from './history/history.component';
 import { LoginComponent } from './login/login.component';
 import { DataService } from './_shared/services/data.service';
 import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 
@@ -46,7 +48,8 @@ import { FooterComponent } from './footer/footer.component';
     DialogComponent,
     HistoryComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    GaugeModule.forRoot()
+    GaugeModule.forRoot(),
+    NgbModule
   ],
   entryComponents: [DialogComponent],
   providers: [DataService],
