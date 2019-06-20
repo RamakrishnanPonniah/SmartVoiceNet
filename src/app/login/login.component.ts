@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { User } from '../_shared/interfaces/user';
 import { AuthService } from '../_shared/services/auth.service';
 import { Router } from '@angular/router';
+import { LoginValidators } from '../_shared/validators/login-validators';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,8 @@ export class LoginComponent implements OnInit {
     this.loginForm  =  this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
+  },{
+    validator: LoginValidators('email', 'password')
   });
   }
 
