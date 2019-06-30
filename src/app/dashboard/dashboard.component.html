@@ -15,7 +15,7 @@
                 <mat-divider class="svn-divider" [vertical]="true"> </mat-divider>
             </div>
             <div class="col">
-            <app-upload-audio></app-upload-audio>
+            <app-upload-audio (transcriptEvent)="updateTranscript($event)" (scoreEvent)="updateScore($event)"></app-upload-audio>
           </div>
 
           </div>

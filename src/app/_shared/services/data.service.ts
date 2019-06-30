@@ -67,7 +67,7 @@ export class DataService {
         else if(words.length > 0 && words.indexOf(keyword) == -1)  words.push(keyword);
       }
     });
-    console.log('matching words', words);
+    
     return words.length;
   }
 

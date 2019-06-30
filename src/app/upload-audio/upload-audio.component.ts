@@ -35,11 +35,12 @@ export class UploadAudioComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer, private dataService : DataService) { }
 
   onFileSelected(event) {
+    let audioFile : any;
     const inputNode: any = document.querySelector('#file');
 
     if (typeof (FileReader) !== 'undefined') {
       const reader = new FileReader();
-      let audioFile = event.target.files[0];
+      audioFile = event.target.files[0];
       this.audioSrc = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(audioFile));
 
       // create the push stream we need for the speech sdk.
@@ -48,11 +49,11 @@ export class UploadAudioComponent implements OnInit {
       reader.onload = (e: any) => {
         this.srcResult = e.target.result;
         pushStream.write(this.srcResult)
-
         this.audioConfig = SpeechSDK.AudioConfig.fromStreamInput(pushStream);
         // Setup speech recognizer
         this.recognizer = new SpeechSDK.SpeechRecognizer(this.speechConfig, this.audioConfig);
-        this.recognizer.recognized = (s, e) => this.recognized(s, e);
+        this.recognizer.startContinuousRecognitionAsync();
+        this.recognizer.recognizing = (s, e) => this.recognizing(s, e);
       };
 
       reader.readAsArrayBuffer(inputNode.files[0]);
@@ -61,7 +62,7 @@ export class UploadAudioComponent implements OnInit {
 
   }
 
-  recognized = function (s, e) {
+  recognizing = function (s, e) {
 
     // Indicates that recognizable speech was not detected, and that recognition is done.
     if (e.result.reason === SpeechSDK.ResultReason.NoMatch) {
@@ -69,9 +70,9 @@ export class UploadAudioComponent implements OnInit {
       let result = "(recognized)  Reason: " + SpeechSDK.ResultReason[e.result.reason] + " NoMatchReason: " + SpeechSDK.NoMatchReason[noMatchDetail.reason] + "\r\n";
       console.log(result);
     } else {
-      console.log(e.result.text);
+      
     }
-    this.speechText += e.result.text;
+    this.speechText = e.result.text;
     speechSubject$.next(this.speechText);  
     this.updateData();
   };
