@@ -9,13 +9,15 @@
         <mat-card-content>
           <div class="row mb-3">
             <div class="col">
-            <app-record-audio [thresholdVal]="thresholdVal" (transcriptEvent)="updateTranscript($event)" (scoreEvent)="updateScore($event)"></app-record-audio>
+            <app-record-audio [thresholdVal]="thresholdVal" (transcriptEvent)="updateTranscript($event)"
+              (scoreEvent)="updateScore($event)" (activeSecEvent)="showUploadSection($event)"></app-record-audio>
           </div>
             <div class="">
                 <mat-divider class="svn-divider" [vertical]="true"> </mat-divider>
             </div>
-            <div class="col">
-            <app-upload-audio (transcriptEvent)="updateTranscript($event)" (scoreEvent)="updateScore($event)"></app-upload-audio>
+            <div class="col" *ngIf="isUploadSectionEnabled">
+            <app-upload-audio (transcriptEvent)="updateTranscript($event)" (scoreEvent)="updateScore($event)"
+            (activeSecEvent)="showUploadSection($event)"></app-upload-audio>
           </div>
 
           </div>

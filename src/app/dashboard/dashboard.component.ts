@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
 
   transcript: string;
 
+  isUploadSectionEnabled: boolean = true;
   updateBtnEnabled : boolean = false;
   autoTicks = false;
   disabled = false;
@@ -78,10 +79,12 @@ export class DashboardComponent implements OnInit {
     this.transcript = $event;
   }
 
- 
+  showUploadSection($event) {
 
-  
-  ngOnInit() {
+    this.isUploadSectionEnabled = $event;
+  }
+
+   ngOnInit() {
     
     this.gaugeClass =  'empty-gauge';
   }

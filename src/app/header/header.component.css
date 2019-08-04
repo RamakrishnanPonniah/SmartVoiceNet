@@ -14,6 +14,8 @@
 
 .svn-menu-link { vertical-align: top;}
 
+.svn-nav-ul > li { margin: 0px 10px;}
+
 .svn-nav-ul > li :hover { cursor: pointer; background: #404fa2;}
 
 @media only screen and (max-width: 768px) {

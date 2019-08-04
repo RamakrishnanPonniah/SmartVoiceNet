@@ -1,44 +1,46 @@
 <nav class="navbar navbar-dark fixed-top svn-navbar flex-md-nowrap p-0 shadow  navbar-expand-lg ">
-  <a class="navbar-brand mr-0" href="javascript:void(0)">    
+  
+  <a class="navbar-brand mr-0" href="javascript:void(0)">
     <img src="assets/images/logo.png" alt="accenture_logo" class="svn_logo mx-3">
   </a>
+
   <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}">
-      <ul class="navbar-nav mr-auto">
-         
-        </ul>
-     
+
+    <ul class="navbar-nav mr-auto"></ul>
+
     <ul class="navbar-nav nav px-3 svn-nav-ul">
 
-        <li class="nav-item text-nowrap" *ngIf="isLoggedIn" (click)="showHome()">
-            <a class="nav-link" href="javascript:void(0)" title="Home">
-              <mat-icon >home</mat-icon>
-               <span class="svn-menu-link m-1">Home</span>
-            </a>
-          </li>
+      <li class="nav-item text-nowrap" *ngIf="isLoggedIn" (click)="showHome()">
+        <a class="nav-link" href="javascript:void(0)" title="Home">
+          <mat-icon>home</mat-icon>
+          <!--<span class="svn-menu-link m-1">Home</span>-->
+        </a>
+      </li>
 
       <li class="nav-item text-nowrap" *ngIf="isLoggedIn" (click)="showSlider()">
         <a class="nav-link" href="javascript:void(0)" title="About Us">
-            <mat-icon >people</mat-icon>
-            <span class="svn-menu-link m-1">About</span>
+          <mat-icon>people</mat-icon>
+          <!--<span class="svn-menu-link m-1">About</span>-->
         </a>
       </li>
-          
+
       <li class="nav-item text-nowrap" *ngIf="isLoggedIn">
-        <a class="nav-link" href="#" title="logout" (click)="logout()" >
-          <mat-icon >lock_open</mat-icon>
-          <span class="svn-menu-link m-1">Logout</span>
+        <a class="nav-link" href="#" title="logout" (click)="logout()">
+          <mat-icon>lock_open</mat-icon>
+          <!--<span class="svn-menu-link m-1">Logout</span>-->
         </a>
       </li>
 
-      
     </ul>
-    <a class="navbar-brand mr-0" href="javascript:void(0)">    
-        <img src="assets/images/accenture_logo.png" alt="accenture_logo" class="svn_acn_logo mx-3">
-      </a>
-  </div>
-  
-</nav>
 
+    <a class="navbar-brand mr-0" href="javascript:void(0)">
+      <img src="assets/images/accenture_logo.png" alt="accenture_logo" class="svn_acn_logo mx-3">
+    </a>
+
+  </div>
+
+</nav>

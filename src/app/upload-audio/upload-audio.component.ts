@@ -21,6 +21,7 @@ export class UploadAudioComponent implements OnInit {
 
   @Output() scoreEvent = new EventEmitter<any>();
   @Output() transcriptEvent = new EventEmitter<string>();
+  @Output() activeSecEvent = new EventEmitter<any>();
 
   //microsofot speech service == > subscription key and region for speech services.
   subscriptionKey = environment.speechSubscriptionKey;
@@ -39,6 +40,7 @@ export class UploadAudioComponent implements OnInit {
     const inputNode: any = document.querySelector('#file');
 
     if (typeof (FileReader) !== 'undefined') {
+      this.activeSecEvent.emit(true);
       const reader = new FileReader();
       audioFile = event.target.files[0];
       this.audioSrc = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(audioFile));
@@ -86,12 +88,9 @@ export class UploadAudioComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.scoreEvent.emit({score:0});  
     this.speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this.subscriptionKey, 'southeastasia');
     this.speechConfig.speechRecognitionLanguage = 'en-US';
-
-
-
   }
 
 }

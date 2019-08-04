@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter, Input } from '@angu
 import { AudioRecordingService } from './audio-recording.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
-
+import { Router } from '@angular/router';
 
 import { DataService } from '../_shared/services/data.service';
 import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk';
@@ -23,7 +23,9 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
   recordedAudioUrl : SafeResourceUrl;
   
   @Output() scoreEvent = new EventEmitter<any>();
-  @Output() transcriptEvent  = new EventEmitter<string>();
+  @Output() transcriptEvent  = new EventEmitter<string>();  
+  @Output() activeSecEvent = new EventEmitter<any>();
+  
   @Input() thresholdVal : number;
 
   public transcript : string = '';
@@ -42,22 +44,19 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
   constructor(
     private audioRecordingService : AudioRecordingService,
     private sanitizer: DomSanitizer,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     
-    this.scoreEvent.emit({score:0});    
-   
-    this.speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this.subscriptionKey, 'southeastasia');
-       
+    this.scoreEvent.emit({score:0}); 
+    this.speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this.subscriptionKey, 'southeastasia');       
     this.speechConfig.speechRecognitionLanguage = 'en-US';
-
     this.audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
     // Setup speech recognizer
-    this.recognizer = new SpeechSDK.SpeechRecognizer(this.speechConfig, this.audioConfig);      
+    this.recognizer = new SpeechSDK.SpeechRecognizer(this.speechConfig, this.audioConfig);
 
-   
   }
 
  
@@ -66,9 +65,8 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
   }
 
  
-  startRecording() { 
-    
-    
+  startRecording() {     
+    this.activeSecEvent.emit(false);
     this.speechText = '';
     this.transcriptEvent.emit(this.speechText);
     this.scoreEvent.emit({score:0});   
@@ -116,6 +114,9 @@ export class RecordAudioComponent implements OnInit, OnDestroy {
     console.log('Stopped listening...')
     this.recognizer.stopContinuousRecognitionAsync();
     this.audioIconVisibility = !this.audioIconVisibility;
+    this.activeSecEvent.emit(true);
+    this.scoreEvent.emit({score:0}); 
+    this.transcriptEvent.emit(''); 
     //this.updateData();
     
       
